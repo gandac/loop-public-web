@@ -1,0 +1,9 @@
+export { default as Hero } from './Hero/Hero';
+export { default as Header } from './Header/Header';
+export { default as Footer } from './Footer/Footer';
+export { default as AboutSection } from './HomepageSections/AboutSection';
+export { default as ServicesSection } from './HomepageSections/ServicesSection';
+export { default as ResourcesSection } from './HomepageSections/ResourcesSection';
+export { default as ProjectsSection } from './HomepageSections/ProjectsSection';
+export { default as ContactSectionHome } from './HomepageSections/ContactSection';
+export { default as Database } from './Database/Database';

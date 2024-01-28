@@ -1,13 +1,13 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import Link from 'next/link';
-
+import Image from 'next/image';
+import Database from '../Database/Database';
 import Text from '../text';
 import styles from '../../styles/post.module.css';
 
 export function renderBlock(block) {
   const { type, id } = block;
   const value = block[type];
-
   switch (type) {
     case 'paragraph':
       return (
@@ -52,9 +52,7 @@ export function renderBlock(block) {
       return (
         <div>
           <label htmlFor={id}>
-            <input type="checkbox" id={id} defaultChecked={value.checked} />
-            {' '}
-            <Text title={value.rich_text} />
+            <input type="checkbox" id={id} defaultChecked={value.checked} /> <Text title={value.rich_text} />
           </label>
         </div>
       );
@@ -106,8 +104,7 @@ export function renderBlock(block) {
       return (
         <figure>
           <div className={styles.file}>
-            📎
-            {' '}
+            📎{' '}
             <Link href={srcFile} passHref>
               {lastElementInArray.split('?')[0]}
             </Link>
@@ -146,19 +143,27 @@ export function renderBlock(block) {
       );
     }
     case 'column_list': {
-      return (
-        <div className={styles.row}>
-          {block.children.map((childBlock) => renderBlock(childBlock))}
-        </div>
-      );
+      return <div className={styles.row}>{block.children.map((childBlock) => renderBlock(childBlock))}</div>;
     }
     case 'column': {
       return <div>{block.children.map((child) => renderBlock(child))}</div>;
     }
+    case 'rich_text': {
+      return (
+        <div>
+          <Text title={value} />
+        </div>
+      );
+    }
+    case 'child_database': {
+      return (
+        <div>
+          <Database block={block} value={value} />
+        </div>
+      );
+    }
     default:
-      return `❌ Unsupported block (${
-        type === 'unsupported' ? 'unsupported by Notion API' : type
-      })`;
+      return `❌ Unsupported block (${type === 'unsupported' ? 'unsupported by Notion API' : type})`;
   }
 }
 

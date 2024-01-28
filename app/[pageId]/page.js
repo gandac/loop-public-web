@@ -2,10 +2,10 @@ import { Fragment } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { getDatabase, getBlocks, getPageFromSlug } from '../../../lib/notion';
-import Text from '../../../components/text';
-import { renderBlock } from '../../../components/notion/renderer';
-import styles from '../../../styles/post.module.css';
+import { getDatabase, getBlocks, getPageFromSlug } from '../../lib/notion';
+import Text from '../../components/text';
+import { renderBlock } from '../../components/notion/renderer';
+import styles from '../../styles/post.module.css';
 
 // Return a list of `params` to populate the [slug] dynamic segment
 export async function generateStaticParams() {
@@ -17,7 +17,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }) {
-  const page = await getPageFromSlug(params?.slug);
+  const page = await getPageFromSlug(params?.pageId);
   const blocks = await getBlocks(page?.id);
 
   if (!page || !blocks) {

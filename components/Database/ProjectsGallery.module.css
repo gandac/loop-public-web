@@ -1,0 +1,12 @@
+.projectsSwipe {
+  padding-top: 2em;
+  padding-bottom: 5em;
+}
+
+.projectsSwipe :global(img) {
+  transition: transform 0.4s;
+}
+.projectsSwipe :global(.swiper-slide-active) :global(img) {
+  transform: scale(1.1);
+  transform-origin: 50% 20%;
+}

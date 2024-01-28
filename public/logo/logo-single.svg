@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="64" height="64" viewBox="0 0 64 64" xml:space="preserve">
+<desc>Created with Fabric.js 5.3.0</desc>
+<defs>
+</defs>
+<g transform="matrix(1 0 0 1 32 32)" id="_gJPJt3gWRpLSWLtYedWh"  >
+<path style="stroke: rgb(255,255,255); stroke-width: 2; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"  transform=" translate(-32, -32)" d="M 46 36 L 42 36 L 42 28 L 46 28 C 52.17 28 56 24.17 56 18 C 56 11.829999999999998 52.17 8 46 8 C 39.83 8 36 11.83 36 18 L 36 22 L 28 22 L 28 18 C 28 11.83 24.17 8 18 8 C 11.829999999999998 8 8 11.83 8 18 C 8 24.17 11.83 28 18 28 L 22 28 L 22 36 L 18 36 C 11.83 36 8 39.83 8 46 C 8 52.17 11.83 56 18 56 C 24.17 56 28 52.17 28 46 L 28 42 L 36 42 L 36 46 C 36 52.17 39.83 56 46 56 C 52.17 56 56 52.17 56 46 C 56 39.83 52.17 36 46 36 Z M 42 18 C 42 15.53 43.53 14 46 14 C 48.47 14 50 15.53 50 18 C 50 20.47 48.47 22 46 22 L 42 22 L 42 18 Z M 22 46 C 22 48.47 20.47 50 18 50 C 15.530000000000001 50 14 48.47 14 46 C 14 43.53 15.53 42 18 42 L 22 42 L 22 46 Z M 22 22 L 18 22 C 15.53 22 14 20.47 14 18 C 14 15.530000000000001 15.53 14 18 14 C 20.47 14 22 15.53 22 18 L 22 22 Z M 36 36 L 28 36 L 28 28 L 36 28 L 36 36 Z M 46 50 C 43.53 50 42 48.47 42 46 L 42 42 L 46 42 C 48.47 42 50 43.53 50 46 C 50 48.47 48.47 50 46 50 Z" stroke-linecap="round" />
+</g>
+</svg>

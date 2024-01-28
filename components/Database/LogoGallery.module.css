@@ -1,0 +1,261 @@
+.logosWrapper {
+  width: 100%;
+  height: 560px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.centerCircle {
+  width: 150px;
+  height: 150px;
+  position: static;
+  top: auto;
+  right: auto;
+}
+
+@media screen and (max-width: 479px) {
+  .centerCircle {
+    width: 125px;
+    height: 125px;
+  }
+}
+
+.innerCircleImage {
+  width: 100%;
+  height: 100%;
+}
+
+.innerCircleWrapper {
+  z-index: 4;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.innerCircleSpin {
+  width: 392px;
+  height: 392px;
+  position: relative;
+  top: auto;
+  left: auto;
+  /* */
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.innerCircle {
+  width: 86px;
+  height: 86px;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.innerCircle.innerCircle1 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+.innerCircle.innerCircle2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-50%, 50%);
+}
+.innerCircle.innerCircle3 {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+.innerCircle.innerCircle4 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+.innerCircle.innerCircle5 {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+.innerCircle.innerCircle6 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate(50%, -50%);
+}
+.innerCircle.innerCircle7 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.innerCircle.innerCircle8 {
+  transform: translate(50%, 50%);
+}
+
+@media screen and (max-width: 479px) {
+  .innerCircleSpin {
+    width: 314px;
+    height: 314px;
+  }
+  .innerCircle {
+    width: 68px;
+    height: 68px;
+  }
+}
+
+.outerCircleImage {
+  width: 100%;
+  height: 100%;
+}
+
+.outerCircleWrapper {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.outerCircleSpin {
+  width: 560px;
+  height: 560px;
+  position: relative;
+  z-index: 5;
+  /* */
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.outerCircle {
+  width: 58px;
+  height: 58px;
+  display: inline-block;
+  max-width: 100%;
+  z-index: 5;
+}
+
+.outerCircle.outerCircle1 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+.outerCircle.outerCircle2 {
+  position: absolute;
+  top: 12.5%;
+  left: 62.5%;
+  right: auto;
+  transform: translateY(-75%);
+}
+.outerCircle.outerCircle3 {
+  position: absolute;
+  top: 25%;
+  left: 75%;
+  right: auto;
+  transform: translate(25%, -100%);
+}
+.outerCircle.outerCircle4 {
+  position: absolute;
+  top: 37.5%;
+  bottom: auto;
+  left: 87.5%;
+  right: auto;
+  transform: translateY(-87.5%);
+}
+.outerCircle.outerCircle5 {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+.outerCircle.outerCircle6 {
+  position: absolute;
+  top: 62.5%;
+  left: 87.5%;
+  transform: translateY(-12.5%);
+}
+.outerCircle.outerCircle7 {
+  position: absolute;
+  top: 75%;
+  left: 75%;
+  transform: translate(25%);
+}
+.outerCircle.outerCircle8 {
+  position: absolute;
+  top: 87.5%;
+  left: 62.5%;
+  transform: translateY(-25%);
+}
+.outerCircle.outerCircle9 {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%);
+}
+.outerCircle.outerCircle10 {
+  position: absolute;
+  top: 87.5%;
+  left: 37.5%;
+  transform: translate(-100%, -25%);
+}
+.outerCircle.outerCircle11 {
+  position: absolute;
+  top: 75%;
+  left: 25%;
+  transform: translate(-125%);
+}
+.outerCircle.outerCircle12 {
+  position: absolute;
+  top: 62.5%;
+  left: 12.5%;
+  transform: translate(-87.5%, -12.5%);
+}
+.outerCircle.outerCircle13 {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.outerCircle.outerCircle14 {
+  position: absolute;
+  top: 37%;
+  left: 12.5%;
+  transform: translate(-87.5%, -87.5%);
+}
+.outerCircle.outerCircle15 {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  transform: translate(-125%, -100%);
+}
+.outerCircle.outerCircle16 {
+  position: absolute;
+  top: 12.5%;
+  left: 37.5%;
+  transform: translate(-100%, -75%);
+}
+
+@media screen and (max-width: 479px) {
+  .outerCircleWrapper {
+    width: auto;
+  }
+  .outerCircleSpin {
+    width: 436px;
+    height: 436px;
+  }
+  .outerCircle {
+    width: 44px;
+    height: 44px;
+  }
+}
