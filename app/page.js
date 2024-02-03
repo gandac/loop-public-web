@@ -23,6 +23,8 @@ async function getPages() {
   return database;
 }
 
+export const revalidate = 0; // revalidate the data at most every hour
+
 export default async function Page() {
   const pages = await getPages();
 
