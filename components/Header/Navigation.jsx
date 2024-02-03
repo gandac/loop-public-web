@@ -1,3 +1,5 @@
+import React from 'react';
+
 const filterLiveStatus = ({ properties }) => properties.Status?.status?.name === 'Live';
 const filterHomeAndContact = ({ properties }) =>
   !['home', 'contact'].includes(properties.pageId?.rich_text?.[0]?.plain_text);

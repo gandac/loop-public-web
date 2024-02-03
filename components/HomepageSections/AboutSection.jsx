@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { renderBlock } from '../notion/renderer';
 
 export default function AboutSection({ headline, description }) {
@@ -15,7 +16,9 @@ export default function AboutSection({ headline, description }) {
       </div>
 
       <p className="text-left">
-        <button className="my-2 text-lg text-indigo-700 hover:underline">Read more</button>
+        <Link href="/contact" className="my-2 text-lg text-indigo-700 hover:underline">
+          Read more
+        </Link>
       </p>
     </section>
   );

@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Text, { getTextContent } from '../text';
+import Link from 'next/link';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
@@ -14,11 +15,19 @@ import 'swiper/css/pagination';
 export default function ProjectsGallery({ title, database }) {
   const images = database.map((el, index) => {
     const title = getTextContent({ title: el.properties?.title?.rich_text });
+    const URL = el.properties?.URL[el.properties.URL.type];
     const image = el.properties.Image.files?.[0]?.[el.properties.Image.files?.[0]?.type].url;
+    const imageHTML = <Image src={image} width={859} height={1205} alt="" loading="eager" title={title} />;
 
     return (
       <SwiperSlide key={el.id}>
-        <Image src={image} width={859} height={1205} alt="" loading="eager" />
+        {URL.length > 1 ? (
+          <Link href={URL} target="_blank">
+            {imageHTML}
+          </Link>
+        ) : (
+          imageHTML
+        )}
       </SwiperSlide>
     );
   });
