@@ -38,7 +38,7 @@ export default async function Footer({ pages }) {
                 {pages
                   .filter(({ properties }) => !['home'].includes(properties.pageId?.rich_text?.[0]?.plain_text))
                   .map((post) => {
-                    const slug = post.properties?.Slug?.rich_text[0].text.content;
+                    const slug = post.properties?.Slug?.rich_text[0]?.text.content;
                     return (
                       <li key={post.id} className={styles.post}>
                         <Link href={`/${slug}`}>
