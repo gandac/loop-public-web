@@ -24,6 +24,7 @@ async function getPages() {
 }
 
 export const revalidate = 0; // revalidate the data at most every hour
+export const dynamic = 'force-dynamic';
 
 export default async function Page() {
   const pages = await getPages();
