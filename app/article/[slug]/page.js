@@ -16,6 +16,8 @@ export async function generateStaticParams() {
   });
 }
 
+export const revalidate = 0; // revalidate the data at most every hour
+
 export default async function Page({ params }) {
   const page = await getPageFromSlug(params?.slug);
   const blocks = await getBlocks(page?.id);
