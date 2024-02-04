@@ -1,13 +1,13 @@
 import React from 'react';
 
 const filterLiveStatus = ({ properties }) => properties.Status?.status?.name === 'Live';
-const filterHomeAndContact = ({ properties }) =>
-  !['home', 'contact'].includes(properties.pageId?.rich_text?.[0]?.plain_text);
+const filterUnwantedPages = ({ properties }) =>
+  !['home', 'contact', 'resources'].includes(properties.pageId?.rich_text?.[0]?.plain_text);
 
-export default function Navigation({ allPages }) {
+export default function Navigation({ allPages, className }) {
   const navigationItems = allPages
     .filter(filterLiveStatus)
-    .filter(filterHomeAndContact)
+    .filter(filterUnwantedPages)
     .map(({ properties }) => (
       <a
         href={`/${properties.pageId?.rich_text?.[0]?.plain_text}`}
@@ -18,7 +18,7 @@ export default function Navigation({ allPages }) {
     ));
 
   return (
-    <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+    <div className={`w-full block flex-grow lg:flex lg:items-center lg:w-auto ${className}`}>
       <div className="text-sm lg:flex-grow">{navigationItems}</div>
       <div>
         <a

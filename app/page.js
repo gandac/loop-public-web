@@ -1,7 +1,5 @@
-import React, { Fragment } from 'react';
-import Link from 'next/link';
+import React from 'react';
 import { getDatabase, getPageFromPageId, getBlocks } from '../lib/notion';
-import { renderBlock } from '../components/notion/renderer';
 import {
   Header,
   Footer,
@@ -12,8 +10,6 @@ import {
   ProjectsSection,
   ContactSectionHome
 } from '../components';
-import Text from '../components/text';
-import styles from './index.module.css';
 
 export const databaseId = process.env?.NOTION_DATABASE_ID;
 
@@ -53,12 +49,12 @@ export default async function Page() {
   return (
     <div className="bg-gray-50">
       <Header allPages={pages} />
-      <Hero
-        cover={homepage.cover}
-        headline={homepage.properties.headline}
-        description={homepage.properties.description}
-      />
-      <main>
+      <main className="mt-20 lg:mt-0">
+        <Hero
+          cover={homepage.cover}
+          headline={homepage.properties.headline}
+          description={homepage.properties.description}
+        />
         <div className="container max-w-screen-md mx-auto px-4 text-lg ">
           <AboutSection headline={aboutPage?.properties?.headline} description={aboutPage?.properties?.description} />
         </div>
@@ -71,7 +67,7 @@ export default async function Page() {
             />
           </div>
         </div>
-        <div className="bg-indigo-950">
+        <div className="bg-indigo-950 overflow-hidden">
           <div className="container max-w-screen-xl mx-auto px-4 text-lg ">
             <ResourcesSection
               headline={resourcesPage?.properties.headline}

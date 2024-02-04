@@ -1,8 +1,9 @@
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { Header, Footer, Cover } from '../../components';
 
-import { getDatabase, getBlocks, getPageFromSlug } from '../../lib/notion';
+import { getDatabase, getBlocks, getPageFromSlug, getPageFromPageId, getPage } from '../../lib/notion';
 import Text from '../../components/text';
 import { renderBlock } from '../../components/notion/renderer';
 import styles from '../../styles/post.module.css';
@@ -10,40 +11,45 @@ import styles from '../../styles/post.module.css';
 // Return a list of `params` to populate the [slug] dynamic segment
 export async function generateStaticParams() {
   const database = await getDatabase();
-  return database?.map((page) => {
-    const slug = page.properties.Slug?.formula?.string;
-    return { id: page.id, slug };
+
+  const mapper = database?.map((page) => {
+    const pageId = page.properties.Slug?.formula?.string;
+
+    return { id: page.id, pageId };
   });
+
+  return mapper;
 }
+
+export const revalidate = 0; // revalidate the data at most every hour
+export const dynamic = 'force-dynamic';
 
 export default async function Page({ params }) {
   const page = await getPageFromSlug(params?.pageId);
+  const allPages = await getDatabase(page.parent[page.parent.type]);
   const blocks = await getBlocks(page?.id);
 
-  if (!page || !blocks) {
+  if (!page || !blocks || !allPages) {
     return <div />;
   }
 
   return (
     <div>
-      <Head>
-        <title>{page.properties.Title?.title[0].plain_text}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <article className={styles.container}>
-        <h1 className={styles.name}>
-          <Text title={page.properties.Title?.title} />
-        </h1>
-        <section>
-          {blocks.map((block) => (
-            <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-          ))}
-          <Link href="/" className={styles.back}>
-            ← Go home
-          </Link>
-        </section>
-      </article>
+      <Header allPages={allPages} />
+      <main>
+        <Cover cover={page.cover} headline={page.properties.Title?.title} />
+        <div className="container max-w-screen-md mx-auto px-4 text-lg mt-20">
+          <section>
+            {blocks.map((block) => (
+              <Fragment key={block.id}>{renderBlock(block)}</Fragment>
+            ))}
+            <Link href="/" className={styles.back}>
+              ← Go home
+            </Link>
+          </section>
+        </div>
+      </main>
+      <Footer pages={allPages} />
     </div>
   );
 }
