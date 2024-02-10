@@ -1,6 +1,5 @@
 .container {
   padding: 0 20px;
-  max-width: 700px;
   margin: 0 auto;
   line-height: 1.5;
   white-space: pre-line;
@@ -26,6 +25,19 @@
 
 .container figcaption {
   opacity: 0.6;
+}
+
+.container:global(.page-about) figure {
+  width: 50%;
+  margin: 0.5rem;
+}
+
+.container:global(.page-about) figure:nth-child(odd) {
+  float: left;
+}
+
+.container:global(.page-about) figure:nth-child(even) {
+  float: right;
 }
 
 .container p {

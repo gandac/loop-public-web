@@ -28,6 +28,8 @@ export default async function Page({ params }) {
   const page = await getPageFromSlug(params?.pageId);
   const allPages = await getDatabase(page.parent[page.parent.type]);
   const blocks = await getBlocks(page?.id);
+  const headlineBlock = renderBlock(page?.properties?.headline);
+  const isWide = page?.properties?.widePage[page?.properties?.widePage?.type];
 
   if (!page || !blocks || !allPages) {
     return <div />;
@@ -38,8 +40,16 @@ export default async function Page({ params }) {
       <Header allPages={allPages} />
       <main>
         <Cover cover={page.cover} headline={page.properties.Title?.title} />
-        <div className={`container max-w-screen-md mx-auto px-4 text-lg mt-20 ${styles.container}`}>
+
+        <div
+          className={`container mx-auto px-4 text-lg mt-20 ${styles.container} page-${params?.pageId} ${
+            isWide ? '' : ' max-w-screen-md'
+          }`}
+        >
           <section>
+            <h2 className="mb-8 mt-10 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+              {headlineBlock}
+            </h2>
             {blocks.map((block) => (
               <Fragment key={block.id}>{renderBlock(block)}</Fragment>
             ))}

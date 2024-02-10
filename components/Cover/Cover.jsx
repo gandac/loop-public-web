@@ -6,8 +6,6 @@ import Text from '../text';
 export default function Hero({ cover, headline }) {
   let coverUrl = null;
 
-  console.log({ headline });
-
   if (!cover) return null;
 
   switch (cover.type) {
