@@ -27,6 +27,7 @@ export default async function Page() {
 
   const homepage = await getPageFromPageId('home');
   const aboutPage = await getPageFromPageId('about');
+  const valuesPage = await getPageFromPageId('values');
   const servicesPage = await getPageFromPageId('services');
   const resourcesPage = await getPageFromPageId('resources');
   const projectsPage = await getPageFromPageId('projects');
@@ -56,7 +57,11 @@ export default async function Page() {
           description={homepage.properties.description}
         />
         <div className="container max-w-screen-md mx-auto px-4 text-lg ">
-          <AboutSection headline={aboutPage?.properties?.headline} description={aboutPage?.properties?.description} />
+          <AboutSection
+            headline={aboutPage?.properties?.headline}
+            description={aboutPage?.properties?.description}
+            valuesPage={valuesPage}
+          />
         </div>
         <div className="bg-indigo-50">
           <div className="container max-w-screen-xl mx-auto px-4 text-lg ">

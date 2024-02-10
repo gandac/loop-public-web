@@ -1,5 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+
 import { renderBlock } from '../notion/renderer';
 
 export default function Hero({ cover, headline, description }) {
@@ -46,9 +48,12 @@ export default function Hero({ cover, headline, description }) {
             <h1 className="text-4xl font-bold leadi sm:text-5xl">{headlineBlock}</h1>
             <p className="px-8 mt-8 mb-12 text-lg">{descriptionText}</p>
             <div className="flex flex-wrap justify-center">
-              <button className="px-8 py-3 m-2 text-lg font-semibold rounded bg-indigo-700 hover:bg-indigo-900 text-gray-50">
+              <Link
+                href="/contact"
+                className="px-8 py-3 m-2 text-lg font-semibold rounded bg-indigo-700 hover:bg-indigo-900 text-gray-50"
+              >
                 Get a quote
-              </button>
+              </Link>
               <button className="px-8 py-3 m-2 text-lg border rounded text-gray-50 border-indigo-700 hover:bg-indigo-900">
                 Subscribe
               </button>

@@ -38,7 +38,7 @@ export default async function Page({ params }) {
       <Header allPages={allPages} />
       <main>
         <Cover cover={page.cover} headline={page.properties.Title?.title} />
-        <div className="container max-w-screen-md mx-auto px-4 text-lg mt-20">
+        <div className={`container max-w-screen-md mx-auto px-4 text-lg mt-20 ${styles.container}`}>
           <section>
             {blocks.map((block) => (
               <Fragment key={block.id}>{renderBlock(block)}</Fragment>
