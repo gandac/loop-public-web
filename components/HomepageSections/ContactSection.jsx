@@ -15,7 +15,7 @@ export default async function ContactSectionHome({ headline, description, pageId
       <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl ">
         {headlineBlock}
       </h1>
-      <div className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400 mb-1 whitespace-pre-wrap mb-2">
+      <div className="text-lg font-normal text-gray-500 lg:text-xl  mb-1 whitespace-pre-wrap mb-2">
         {descriptionBlock}
       </div>
 

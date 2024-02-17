@@ -37,5 +37,5 @@ h1 {
 }
 
 .underline {
-  @apply decoration-blue-400 dark:decoration-blue-600;
+  @apply decoration-blue-400;
 }

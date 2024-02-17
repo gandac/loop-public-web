@@ -16,7 +16,7 @@ export default async function ResourcesSection({ headline, description, page }) 
 
         <div className="grid md:grid-cols-4 gap-2 items-center sm:grid-cols-1">
           <div>
-            <div className="text-lg font-normal text-gray-300 lg:text-xl dark:text-gray-400 mb-1 whitespace-pre-wrap mb-2">
+            <div className="text-lg font-normal text-gray-300 lg:text-xl  mb-1 whitespace-pre-wrap mb-2">
               {descriptionBlock}
             </div>
           </div>

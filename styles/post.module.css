@@ -115,7 +115,7 @@
 
 .underline {
   text-decoration: underline;
-  @apply decoration-8 decoration-blue-400 dark:decoration-blue-600;
+  @apply decoration-8 decoration-blue-400;
 }
 
 .bookmark {

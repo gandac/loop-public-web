@@ -39,7 +39,7 @@ const LogoImage = ({ card, namespace, index, spin }) => {
                 style={{ objectFit: 'contain' }}
               />
 
-              <span className="pointer-events-none absolute -top-10 left-0 w-max opacity-0 transition-opacity group-hover:opacity-100 px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm dark:bg-gray-700">
+              <span className="pointer-events-none absolute -top-10 left-0 w-max opacity-0 transition-opacity group-hover:opacity-100 px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm ">
                 {title}
               </span>
             </>
