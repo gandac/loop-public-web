@@ -33,12 +33,12 @@
   opacity: 0.6;
   letter-spacing: 0.5px;
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   .heading {
     border-color: #343539;
   }
-}
+} */
 
 .posts {
   list-style: none;
