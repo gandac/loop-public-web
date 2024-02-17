@@ -40,10 +40,7 @@ export default function Hero({ cover, headline }) {
             }}
           />
         )}
-        <section
-          className="text-indigo-900 relative text-white"
-          style={{ textShadow: '0px 0px 7px rgba(255,255,255,0.7)' }}
-        >
+        <section className="text-indigo-900 relative" style={{ textShadow: '0px 0px 7px rgba(255,255,255,0.7)' }}>
           <div className="container mx-auto flex flex-col items-center px-4 py-16 text-center md:py-32 md:px-10 lg:px-32 xl:max-w-3xl">
             <h1 className="text-4xl font-bold leadi sm:text-5xl">
               <Text title={headline} />
