@@ -47,7 +47,7 @@ export default async function Page({ params }) {
           }`}
         >
           <section>
-            <h2 className="mb-8 mt-10 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+            <h2 className="mb-8 mt-10 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
               {headlineBlock}
             </h2>
             {blocks.map((block) => (

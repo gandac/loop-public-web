@@ -10,7 +10,7 @@ export default async function ServicesSection({ headline, description, page }) {
   return (
     <section className="py-20">
       <div className="max-w-screen-md mx-auto ">
-        <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
           {headlineBlock}
         </h1>
 
