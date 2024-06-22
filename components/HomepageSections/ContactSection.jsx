@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import { renderBlock } from '../notion/renderer';
 import { getBlocks } from '../../lib/notion';
-// import { SubscribeToNewsletter } from '../SubscribeToNewsletter/SubscribeToNewsletter';
+import { SubscribeToNewsletter } from '../SubscribeToNewsletter/SubscribeToNewsletter';
 
 export default async function ContactSectionHome({ headline, description, pageId }) {
   const headlineBlock = renderBlock(headline);
@@ -23,7 +23,7 @@ export default async function ContactSectionHome({ headline, description, pageId
         <Fragment key={block.id}>{renderBlock(block)}</Fragment>
       ))}
 
-      {/* <SubscribeToNewsletter /> */}
+      <SubscribeToNewsletter />
     </section>
   );
 }

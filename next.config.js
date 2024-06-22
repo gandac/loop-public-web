@@ -1,5 +1,8 @@
 module.exports = {
   staticPageGenerationTimeout: 300,
+  experimental: {
+    serverActions: true
+  },
   images: {
     domains: [
       'www.notion.so',
