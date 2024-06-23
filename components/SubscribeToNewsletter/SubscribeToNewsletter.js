@@ -1,5 +1,5 @@
 'use client';
-import React, { useOptimistic } from 'react';
+import React from 'react';
 
 import { kv } from '@vercel/kv';
 import { NextResponse } from 'next/server';
@@ -7,10 +7,10 @@ import { NextResponse } from 'next/server';
 import { SingleSubscribeToNewsletter } from '../../actions/newsletter/subscribe';
 
 export async function SubscribeToNewsletter() {
-  const [optimisticMessages, addOptimisticMessage] = useOptimistic(messages, (state, newMessage) => [
-    ...state,
-    { message: newMessage }
-  ]);
+  // const [optimisticMessages, addOptimisticMessage] = useOptimistic(messages, (state, newMessage) => [
+  //   ...state,
+  //   { message: newMessage }
+  // ]);
   // async function SingleSubscribeToNewsletter(formData) {
   //   // event.preventDefault();
   //   // const { email } = event.target.elements;
