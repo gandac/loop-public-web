@@ -1,5 +1,4 @@
-import React from 'react';
-import { getChildDatabase, getBlocks } from '../../lib/notion';
+import { getChildDatabase } from '../../lib/notion';
 import CardGallery from './CardGallery';
 import LogoGallery from './LogoGallery';
 import ProjectsGallery from './ProjectsGallery';

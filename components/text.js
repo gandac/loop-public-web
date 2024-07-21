@@ -1,4 +1,3 @@
-import React from 'react';
 import { string, bool } from 'prop-types';
 import styles from '../styles/post.module.css';
 
@@ -23,7 +22,9 @@ function Text({ title }) {
   }
   return title.map((value, index) => {
     const {
-      annotations: { bold, code, color, italic, strikethrough, underline },
+      annotations: {
+        bold, code, color, italic, strikethrough, underline
+      },
       text
     } = value;
     return (

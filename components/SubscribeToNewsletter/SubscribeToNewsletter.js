@@ -1,8 +1,7 @@
 'use client';
-import React from 'react';
 
-import { kv } from '@vercel/kv';
-import { NextResponse } from 'next/server';
+// import { kv } from '@vercel/kv';
+// import { NextResponse } from 'next/server';
 
 import { SingleSubscribeToNewsletter } from '../../actions/newsletter/subscribe';
 
@@ -29,6 +28,7 @@ export async function SubscribeToNewsletter() {
             Stay in touch
           </h3>
           <p className="">
+
             Curious to see our achievements or you want to stay in the loop with latest tech trends? Get updates and
             special offers from LoopLine Studios
           </p>

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { renderBlock } from '../notion/renderer';
 import { getBlocks } from '../../lib/notion';
 
@@ -10,7 +10,11 @@ export default async function ResourcesSection({ headline, description, page }) 
   return (
     <section className="py-20">
       <div className="max-w-screen-md mx-auto t">
-        <h1 className="mb-8 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-6xl bg-gradient-to-r from-green-500 via-yellow-250 to-blue-600 text-transparent bg-clip-text text-center">
+        <h1
+          className="mb-8 text-4xl font-extrabold leading-none tracking-tight 
+        md:text-5xl lg:text-6xl bg-gradient-to-r 
+        from-green-500 via-yellow-250 to-blue-600 text-transparent bg-clip-text text-center"
+        >
           {headlineBlock}
         </h1>
 

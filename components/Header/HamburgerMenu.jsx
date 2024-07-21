@@ -1,10 +1,10 @@
-import React from 'react';
-
 export default function HamburgerMenu({ onClick }) {
   return (
     <div className="block lg:hidden">
       <button
-        className="flex items-center px-3 py-2 border rounded text-dark-400 border-gray-950 hover:text-gray-600 hover:border-gray-600"
+        type="button"
+        className="flex items-center px-3 py-2 border rounded text-dark-400
+         border-gray-950 hover:text-gray-600 hover:border-gray-600"
         onClick={onClick}
       >
         <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

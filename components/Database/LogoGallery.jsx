@@ -1,17 +1,16 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Text, { getTextContent } from '../text';
+import { getTextContent } from '../text';
 import styles from './LogoGallery.module.css';
 
-const LogoImage = ({ card, namespace, index, spin }) => {
+function LogoImage({ card, namespace, index, spin }) {
   const title = getTextContent({ title: card.properties?.title?.rich_text });
-  const files = card.properties.Image.files;
+  const { files } = card.properties.Image;
   const URL = card.properties?.URL?.[card.properties?.URL?.type];
-  const operation = namespace === 'outerCircle' ? '-' : '+';
 
   return (
     <Link
@@ -39,7 +38,10 @@ const LogoImage = ({ card, namespace, index, spin }) => {
                 style={{ objectFit: 'contain' }}
               />
 
-              <span className="pointer-events-none absolute -top-10 left-0 w-max opacity-0 transition-opacity group-hover:opacity-100 px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm ">
+              <span
+                className="pointer-events-none absolute -top-10 left-0 w-max opacity-0 transition-opacity
+              group-hover:opacity-100 px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm"
+              >
                 {title}
               </span>
             </>
@@ -48,9 +50,9 @@ const LogoImage = ({ card, namespace, index, spin }) => {
       </div>
     </Link>
   );
-};
+}
 
-export default function LogoGallery({ title, database }) {
+export default function LogoGallery({ database }) {
   const [outerSpin, setOuterSpin] = useState(0);
   const [innerSpin, setInnerSpin] = useState(0);
 
@@ -77,15 +79,27 @@ export default function LogoGallery({ title, database }) {
 
   const innerCircleImages = database
     .filter((_, index) => index < 8)
-    .map((card, index) => {
-      return LogoImage({ card, namespace: 'innerCircle', index, key: index, spin: innerSpin });
-    });
+    .map((card, index) =>
+      LogoImage({
+        card,
+        namespace: 'innerCircle',
+        index,
+        key: index,
+        spin: innerSpin
+      })
+    );
 
   const outerCircleImages = database
     .filter((_, index) => index >= 8 && index < 24)
-    .map((card, index) => {
-      return LogoImage({ card, namespace: 'outerCircle', index, key: index, spin: outerSpin });
-    });
+    .map((card, index) =>
+      LogoImage({
+        card,
+        namespace: 'outerCircle',
+        index,
+        key: index,
+        spin: outerSpin
+      })
+    );
 
   return (
     <div className={styles.logosWrapper}>

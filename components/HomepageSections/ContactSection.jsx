@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 
 import { renderBlock } from '../notion/renderer';
 import { getBlocks } from '../../lib/notion';

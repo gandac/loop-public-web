@@ -1,4 +1,3 @@
-import React from 'react';
 import { getDatabase, getPageFromPageId, getBlocks } from '../lib/notion';
 import {
   Header,
@@ -35,14 +34,14 @@ export default async function Page() {
   const blocks = await getBlocks(homepage?.id);
 
   if (
-    !homepage ||
-    !aboutPage ||
-    !servicesPage ||
-    !resourcesPage ||
-    !projectsPage ||
-    !contactPage ||
-    !blocks ||
-    !pages
+    !homepage
+    || !aboutPage
+    || !servicesPage
+    || !resourcesPage
+    || !projectsPage
+    || !contactPage
+    || !blocks
+    || !pages
   ) {
     return <div />;
   }

@@ -1,11 +1,9 @@
-import React from 'react';
 import Link from 'next/link';
 import { renderBlock } from '../notion/renderer';
 
 export default function AboutSection({ headline, description, valuesPage }) {
   const headlineBlock = renderBlock(headline);
   const descriptionBlock = renderBlock(description);
-  const headlineValues = renderBlock(valuesPage?.properties?.headline);
   const headlineDesc = renderBlock(valuesPage?.properties?.description);
 
   return (

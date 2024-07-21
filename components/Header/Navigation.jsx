@@ -1,8 +1,5 @@
-import React from 'react';
-
 const filterLiveStatus = ({ properties }) => properties.Status?.status?.name === 'Live';
-const filterUnwantedPages = ({ properties }) =>
-  !['home', 'contact', 'resources'].includes(properties.pageId?.rich_text?.[0]?.plain_text);
+const filterUnwantedPages = ({ properties }) => !['home', 'contact', 'resources'].includes(properties.pageId?.rich_text?.[0]?.plain_text);
 
 export default function Navigation({ allPages, className }) {
   const navigationItems = allPages
@@ -11,6 +8,7 @@ export default function Navigation({ allPages, className }) {
     .map(({ properties }) => (
       <a
         href={`/${properties.pageId?.rich_text?.[0]?.plain_text}`}
+        key={properties.pageId?.rich_text?.[0]?.plain_text}
         className="block mt-4 lg:inline-block lg:mt-0 text-indigo-950 hover:text-gray-600 mr-4"
       >
         {properties.Title?.title?.[0]?.text?.content}

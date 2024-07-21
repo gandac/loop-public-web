@@ -1,19 +1,18 @@
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
-import Text, { getTextContent } from '../text';
 import Link from 'next/link';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
+
+import { getTextContent } from '../text';
 import styles from './ProjectsGallery.module.css';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-export default function ProjectsGallery({ title, database }) {
-  const images = database.map((el, index) => {
+export default function ProjectsGallery({ database }) {
+  const images = database.map((el) => {
     const title = getTextContent({ title: el.properties?.title?.rich_text });
     const URL = el.properties?.URL[el.properties.URL.type];
     const image = el.properties.Image.files?.[0]?.[el.properties.Image.files?.[0]?.type].url;
@@ -49,8 +48,8 @@ export default function ProjectsGallery({ title, database }) {
           spaceBetween: 50
         }
       }}
-      centeredSlides={true}
-      loop={true}
+      centeredSlides
+      loop
       autoplay={{
         delay: 5000,
         disableOnInteraction: false

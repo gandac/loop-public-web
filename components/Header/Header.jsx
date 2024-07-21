@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Logo from './Logo';
 import HamburgerMenu from './HamburgerMenu';
 import Navigation from './Navigation';
-import styles from './header.module.css';
 
 export default function Header({ allPages }) {
   const [mobileNavigationClass, setMobileNavigationClass] = useState('max-h-0');

@@ -5,7 +5,6 @@ module.exports = {
     node: true
   },
   extends: [
-    'airbnb',
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
@@ -28,7 +27,7 @@ module.exports = {
   },
   rules: {
     'comma-dangle': ['error', 'never'],
-    'max-len': 120,
+    'max-len': [2, { code: 180 }],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/jsx-props-no-spreading': [
       1,

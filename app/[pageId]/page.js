@@ -1,10 +1,8 @@
-import React, { Fragment } from 'react';
-import Head from 'next/head';
+import { Fragment } from 'react';
 import Link from 'next/link';
 import { Header, Footer, Cover } from '../../components';
 
-import { getDatabase, getBlocks, getPageFromSlug, getPageFromPageId, getPage } from '../../lib/notion';
-import Text from '../../components/text';
+import { getDatabase, getBlocks, getPageFromSlug } from '../../lib/notion';
 import { renderBlock } from '../../components/notion/renderer';
 import styles from '../../styles/post.module.css';
 
@@ -47,7 +45,9 @@ export default async function Page({ params }) {
           }`}
         >
           <section>
-            <h2 className="mb-8 mt-10 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+            <h2 className="mb-8 mt-10 text-4xl font-extrabold
+            leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl"
+            >
               {headlineBlock}
             </h2>
             {blocks.map((block) => (

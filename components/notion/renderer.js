@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import Database from '../Database/Database';
 import Text from '../text';
 import styles from '../../styles/post.module.css';
@@ -52,7 +51,9 @@ export function renderBlock(block) {
       return (
         <div>
           <label htmlFor={id}>
-            <input type="checkbox" id={id} defaultChecked={value.checked} /> <Text title={value.rich_text} />
+            <input type="checkbox" id={id} defaultChecked={value.checked} />
+            {' '}
+            <Text title={value.rich_text} />
           </label>
         </div>
       );
@@ -104,7 +105,8 @@ export function renderBlock(block) {
       return (
         <figure>
           <div className={styles.file}>
-            📎{' '}
+            📎
+            {' '}
             <Link href={srcFile} passHref>
               {lastElementInArray.split('?')[0]}
             </Link>
