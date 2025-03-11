@@ -1,8 +1,9 @@
 import { Fragment } from 'react';
+import { type BlockObjectResponse, type PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import { renderBlock } from '../notion/renderer';
 import { getBlocks } from '../../lib/notion';
 
-export default async function ResourcesSection({ headline, description, page }) {
+export default async function ResourcesSection({ headline, description, page }: { headline: BlockObjectResponse, description: BlockObjectResponse, page: PageObjectResponse }) {
   const headlineBlock = renderBlock(headline);
   const descriptionBlock = renderBlock(description);
   const servicesBlocks = await getBlocks(page?.id);
@@ -25,9 +26,13 @@ export default async function ResourcesSection({ headline, description, page }) 
             </div>
           </div>
           <div className="col-span-3">
-            {servicesBlocks.map((block) => (
-              <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-            ))}
+            {servicesBlocks.map((block) => {
+              if (block?.id) {
+                return (
+                  <Fragment key={block.id}>{renderBlock(block)}</Fragment>
+                )
+              }
+            })}
           </div>
         </div>
       </div>

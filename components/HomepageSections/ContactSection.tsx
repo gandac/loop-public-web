@@ -3,8 +3,9 @@ import { Fragment } from 'react';
 import { renderBlock } from '../notion/renderer';
 import { getBlocks } from '../../lib/notion';
 import { SubscribeToNewsletter } from '../SubscribeToNewsletter/SubscribeToNewsletter';
+import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
-export default async function ContactSectionHome({ headline, description, pageId }) {
+export default async function ContactSectionHome({ headline, description, pageId }: { headline: BlockObjectResponse, description: BlockObjectResponse, pageId: string }) {
   const headlineBlock = renderBlock(headline);
   const descriptionBlock = renderBlock(description);
 
@@ -19,9 +20,13 @@ export default async function ContactSectionHome({ headline, description, pageId
         {descriptionBlock}
       </div>
 
-      {contactBlocks.map((block) => (
-        <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-      ))}
+      {contactBlocks.map((block) => {
+        if (block?.id) {
+          return (
+            <Fragment key={block?.id}>{renderBlock(block)}</Fragment>
+          )
+        }
+      })}
 
       <SubscribeToNewsletter />
     </section>

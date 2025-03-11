@@ -1,8 +1,9 @@
 import Image from 'next/image';
+import { RichTextItemResponse, type PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 import Text from '../text';
 
-export default function Hero({ cover, headline }) {
+export default function Cover({ cover, headline }: { cover: PageObjectResponse['cover'], headline: Array<RichTextItemResponse> }) {
   let coverUrl = null;
 
   if (!cover) return null;
@@ -28,15 +29,15 @@ export default function Hero({ cover, headline }) {
       }}
     >
       {coverUrl && (
-      <Image
-        src={coverUrl}
-        alt="Loop line studios"
-        fill
-        sizes="500px"
-        style={{
-          objectFit: 'cover'
-        }}
-      />
+        <Image
+          src={coverUrl}
+          alt="Loop line studios"
+          fill
+          sizes="500px"
+          style={{
+            objectFit: 'cover'
+          }}
+        />
       )}
       <section className="text-indigo-900 relative" style={{ textShadow: '0px 0px 7px rgba(255,255,255,0.7)' }}>
         <div className="container mx-auto flex flex-col items-center px-4

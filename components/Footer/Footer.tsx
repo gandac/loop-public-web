@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { type PageObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+
 /* eslint-disable max-len */
 import Text from '../text';
 
 import styles from './Footer.module.css';
 
-export default function Footer({ pages }) {
+export default function Footer({ pages }: { pages: PageObjectResponse[] }) {
   return (
     <div className={`relative mt-16 bg-indigo-950 text-indigo-50 ${styles.loopFooter}`}>
       <svg
@@ -35,19 +37,26 @@ export default function Footer({ pages }) {
               <p className="font-semibold tracking-wide text-teal-accent-400">Category</p>
               <ul className="mt-2 space-y-2">
                 {pages
+                  .filter((args) => 'properties' in args)
                   .filter(
-                    ({ properties }) => !['home', 'resources'].includes(properties.pageId?.rich_text?.[0]?.plain_text)
+                    ({ properties }) => {
+                      if (properties.pageId?.type === "rich_text") {
+                        return !['home', 'resources'].includes(properties.pageId?.rich_text?.[0]?.plain_text)
+                      }
+                    }
                   )
-                  .filter(({ properties }) => properties.Status?.status?.name === 'Live')
+                  .filter(({ properties }) => { return properties.Status.type === 'status' && properties.Status?.status?.name === 'Live' })
                   .map((post) => {
-                    const slug = post.properties?.Slug?.rich_text[0]?.text.content;
-                    return (
-                      <li key={post.id} className={styles.post}>
-                        <Link href={`/${slug}`}>
-                          <Text title={post.properties?.Title?.title} />
-                        </Link>
-                      </li>
-                    );
+                    const slug = post.properties?.Slug.type === "rich_text" && post.properties?.Slug?.rich_text[0].type === "text" && post.properties?.Slug?.rich_text[0]?.text.content;
+                    if (post.properties?.Title.type === "title" && slug) {
+                      return (
+                        <li key={post.id} className={styles.post}>
+                          <Link href={`/${slug}`}>
+                            <Text title={post.properties?.Title?.title} />
+                          </Link>
+                        </li>
+                      )
+                    }
                   })}
               </ul>
             </div>

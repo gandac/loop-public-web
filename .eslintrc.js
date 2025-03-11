@@ -4,18 +4,21 @@ module.exports = {
     es2021: true,
     node: true
   },
+  plugins: ['@typescript-eslint/eslint-plugin'],
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
-    'plugin:@next/next/recommended'
+    'plugin:@next/next/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
   overrides: [
     {
       env: {
         node: true
       },
-      files: ['.eslintrc.{js,cjs}'],
+      files: ['.eslintrc.{js,cjs,ts}'],
       parserOptions: {
         sourceType: 'script'
       }
@@ -28,7 +31,7 @@ module.exports = {
   rules: {
     'comma-dangle': ['error', 'never'],
     'max-len': [2, { code: 180 }],
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx'] }],
     'react/jsx-props-no-spreading': [
       1,
       {

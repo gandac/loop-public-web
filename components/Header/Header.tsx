@@ -1,11 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { type PageObjectResponse } from '@notionhq/client/build/src/api-endpoints'
+
 import Logo from './Logo';
 import HamburgerMenu from './HamburgerMenu';
 import Navigation from './Navigation';
 
-export default function Header({ allPages }) {
+export default function Header({ allPages }: { allPages: (PageObjectResponse)[] }) {
   const [mobileNavigationClass, setMobileNavigationClass] = useState('max-h-0');
 
   const onClickHamburger = () => {

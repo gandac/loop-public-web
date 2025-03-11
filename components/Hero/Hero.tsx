@@ -1,9 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { type PageObjectResponse, type TextRichTextItemResponse, type ParagraphBlockObjectResponse, type RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
 
 import { renderBlock } from '../notion/renderer';
 
-export default function Hero({ cover, headline, description }) {
+export default function Hero({ cover, headline, description }: {
+  cover: PageObjectResponse['cover'], headline: ParagraphBlockObjectResponse, description?: {
+    rich_text: Array<TextRichTextItemResponse>;
+  }
+}) {
   let coverUrl = null;
   const headlineBlock = renderBlock(headline);
   const descriptionText = description?.rich_text?.[0]?.text?.content;
@@ -31,15 +36,15 @@ export default function Hero({ cover, headline, description }) {
       }}
     >
       {coverUrl && (
-      <Image
-        src={coverUrl}
-        alt="Loop line studios"
-        fill
-        sizes="500px"
-        style={{
-          objectFit: 'cover'
-        }}
-      />
+        <Image
+          src={coverUrl}
+          alt="Loop line studios"
+          fill
+          sizes="500px"
+          style={{
+            objectFit: 'cover'
+          }}
+        />
       )}
       <section className="text-gray-100 relative text-white" style={{ textShadow: '0px 0px 7px rgba(0,0,0,0.7)' }}>
         <div className="container mx-auto flex flex-col items-center px-4 py-16 text-center md:py-32 md:px-10 lg:px-32 xl:max-w-3xl">

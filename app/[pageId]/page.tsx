@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+// import { type PageObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import Link from 'next/link';
 import { Header, Footer, Cover } from '../../components';
 
@@ -7,29 +8,29 @@ import { renderBlock } from '../../components/notion/renderer';
 import styles from '../../styles/post.module.css';
 
 // Return a list of `params` to populate the [slug] dynamic segment
-export async function generateStaticParams() {
-  const database = await getDatabase();
+// export async function generateStaticParams() {
+// const database = await getDatabase();
+// if (database.every(page => isFullPage(page))) {
+//   const mapper = database?.map((page) => {
+//     return { id: page.id };
+//   });
 
-  const mapper = database?.map((page) => {
-    const pageId = page.properties.Slug?.formula?.string;
 
-    return { id: page.id, pageId };
-  });
-
-  return mapper;
-}
+//   return mapper;
+// }
+// }
 
 export const revalidate = 0; // revalidate the data at most every hour
 export const dynamic = 'force-dynamic';
 
-export default async function Page({ params }) {
-  const page = await getPageFromSlug(params?.pageId);
-  const allPages = await getDatabase(page.parent[page.parent.type]);
+export default async function Page({ params }: { params: { pageId: string } }) {
+  const page = await getPageFromSlug(params.pageId);
+  const allPages = await getDatabase();
   const blocks = await getBlocks(page?.id);
-  const headlineBlock = renderBlock(page?.properties?.headline);
-  const isWide = page?.properties?.widePage[page?.properties?.widePage?.type];
+  const headlineBlock = page?.properties?.headline?.type === "rich_text" && renderBlock(page?.properties?.headline);
+  const isWide = page?.properties.widePage.type === "checkbox" && page?.properties.widePage[page?.properties.widePage.type];
 
-  if (!page || !blocks || !allPages) {
+  if (!page || !blocks || !allPages || !allPages.every(el => 'created_time' in el)) {
     return <div />;
   }
 
@@ -37,12 +38,11 @@ export default async function Page({ params }) {
     <div>
       <Header allPages={allPages} />
       <main>
-        <Cover cover={page.cover} headline={page.properties.Title?.title} />
+        {page.properties.Title?.type === "title" && <Cover cover={page.cover} headline={page.properties.Title.title} />}
 
         <div
-          className={`container mx-auto px-4 text-lg mt-20 ${styles.container} page-${params?.pageId} ${
-            isWide ? '' : ' max-w-screen-md'
-          }`}
+          className={`container mx-auto px-4 text-lg mt-20 ${styles.container} page-${params?.pageId} ${isWide ? '' : ' max-w-screen-md'
+            }`}
         >
           <section>
             <h2 className="mb-8 mt-10 text-4xl font-extrabold
@@ -51,7 +51,7 @@ export default async function Page({ params }) {
               {headlineBlock}
             </h2>
             {blocks.map((block) => (
-              <Fragment key={block.id}>{renderBlock(block)}</Fragment>
+              <Fragment key={block?.id}>{block?.id && renderBlock(block)}</Fragment>
             ))}
             <Link href="/" className={styles.back}>
               ← Go home

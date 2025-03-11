@@ -1,3 +1,5 @@
+import { type ReactNode } from 'react';
+
 import '../styles/globals.css';
 
 // import { Inter } from 'next/font/google';
@@ -9,7 +11,7 @@ export const metadata = {
   description: 'Notion Next.js blog'
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       {/* <body className={inter.className}> */}

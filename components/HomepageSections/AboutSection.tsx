@@ -1,10 +1,14 @@
 import Link from 'next/link';
+import { type BlockObjectResponse, type PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+
 import { renderBlock } from '../notion/renderer';
 
-export default function AboutSection({ headline, description, valuesPage }) {
+export default function AboutSection({ headline, description, valuesPage }: { headline: BlockObjectResponse, description: BlockObjectResponse, valuesPage: PageObjectResponse | undefined }) {
   const headlineBlock = renderBlock(headline);
   const descriptionBlock = renderBlock(description);
-  const headlineDesc = renderBlock(valuesPage?.properties?.description);
+  //TODO - see why we have incompatibility
+  const valuesDescription = valuesPage?.properties?.description as unknown as BlockObjectResponse
+  const headlineDesc = renderBlock(valuesDescription);
 
   return (
     <section className="py-20">

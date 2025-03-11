@@ -1,4 +1,4 @@
-export default function HamburgerMenu({ onClick }) {
+export default function HamburgerMenu({ onClick }: { onClick: () => void }) {
   return (
     <div className="block lg:hidden">
       <button

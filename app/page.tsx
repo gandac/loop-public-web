@@ -9,6 +9,8 @@ import {
   ProjectsSection,
   ContactSectionHome
 } from '../components';
+import { BlockObjectResponse, ParagraphBlockObjectResponse, type TextRichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
+
 
 export const databaseId = process.env?.NOTION_DATABASE_ID;
 
@@ -34,17 +36,19 @@ export default async function Page() {
   const blocks = await getBlocks(homepage?.id);
 
   if (
-    !homepage
-    || !aboutPage
-    || !servicesPage
-    || !resourcesPage
-    || !projectsPage
-    || !contactPage
-    || !blocks
-    || !pages
+    !homepage ||
+    !aboutPage ||
+    !servicesPage ||
+    !resourcesPage ||
+    !projectsPage ||
+    !contactPage ||
+    !blocks ||
+    !pages ||
+    !pages.every(el => 'properties' in el)
   ) {
     return <div />;
   }
+
 
   return (
     <div className="bg-gray-50">
@@ -52,21 +56,21 @@ export default async function Page() {
       <main className="mt-20 lg:mt-0">
         <Hero
           cover={homepage.cover}
-          headline={homepage.properties.headline}
-          description={homepage.properties.description}
+          headline={homepage.properties.headline as unknown as ParagraphBlockObjectResponse}
+          description={homepage.properties.description as { rich_text: Array<TextRichTextItemResponse> }}
         />
         <div className="container max-w-screen-md mx-auto px-4 text-lg ">
           <AboutSection
-            headline={aboutPage?.properties?.headline}
-            description={aboutPage?.properties?.description}
+            headline={aboutPage?.properties?.headline as unknown as BlockObjectResponse}
+            description={aboutPage?.properties?.description as unknown as BlockObjectResponse}
             valuesPage={valuesPage}
           />
         </div>
         <div className="bg-indigo-50">
           <div className="container max-w-screen-xl mx-auto px-4 text-lg ">
             <ServicesSection
-              headline={servicesPage?.properties.headline}
-              description={servicesPage?.properties?.description}
+              headline={servicesPage?.properties.headline as unknown as BlockObjectResponse}
+              description={servicesPage?.properties?.description as unknown as BlockObjectResponse}
               page={servicesPage}
             />
           </div>
@@ -74,8 +78,8 @@ export default async function Page() {
         <div className="bg-indigo-950 overflow-hidden">
           <div className="container max-w-screen-xl mx-auto px-4 text-lg ">
             <ResourcesSection
-              headline={resourcesPage?.properties.headline}
-              description={resourcesPage?.properties?.description}
+              headline={resourcesPage?.properties.headline as unknown as BlockObjectResponse}
+              description={resourcesPage?.properties?.description as unknown as BlockObjectResponse}
               page={resourcesPage}
             />
           </div>
@@ -83,8 +87,8 @@ export default async function Page() {
         <div className="bg-indigo-50">
           <div className="container max-w-screen-xl mx-auto px-4 text-lg ">
             <ProjectsSection
-              headline={projectsPage?.properties.headline}
-              description={projectsPage?.properties?.description}
+              headline={projectsPage?.properties.headline as unknown as BlockObjectResponse}
+              description={projectsPage?.properties?.description as unknown as BlockObjectResponse}
               page={projectsPage}
             />
           </div>
@@ -92,11 +96,11 @@ export default async function Page() {
 
         <div className="bg-gray-50">
           <div className="container max-w-screen-md mx-auto px-4 text-lg ">
-            <ContactSectionHome
-              headline={contactPage?.properties?.headline}
-              description={contactPage?.properties?.description}
+            {contactPage?.properties?.headline?.type === "rich_text" && contactPage?.properties.description?.id && <ContactSectionHome
+              headline={contactPage?.properties?.headline as unknown as BlockObjectResponse}
+              description={contactPage?.properties?.description as unknown as BlockObjectResponse}
               pageId={contactPage?.id}
-            />
+            />}
           </div>
         </div>
         <Footer pages={pages} />

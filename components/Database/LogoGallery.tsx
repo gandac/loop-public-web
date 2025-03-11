@@ -3,17 +3,19 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { type PartialPageObjectResponse, type PageObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { getTextContent } from '../text';
 import styles from './LogoGallery.module.css';
 
-function LogoImage({ card, namespace, index, spin }) {
-  const title = getTextContent({ title: card.properties?.title?.rich_text });
-  const { files } = card.properties.Image;
-  const URL = card.properties?.URL?.[card.properties?.URL?.type];
+function LogoImage({ card, namespace, index, spin }: { card: PageObjectResponse | PartialPageObjectResponse, namespace: string, index: number, spin: number }) {
+
+  const title = 'properties' in card && card.properties.title.type === "rich_text" && getTextContent({ title: card.created_by && card.properties.title.rich_text });
+  const files = 'properties' in card && card.properties.Image.type === "files" && card.properties.Image.files;
+  const URL = 'properties' in card && card.properties?.URL?.type === "url" && card.properties?.URL?.[card.properties?.URL?.type];
 
   return (
-    <Link
+    title && URL && <Link
       href={URL}
       target="_blank"
       title={title}
@@ -28,15 +30,15 @@ function LogoImage({ card, namespace, index, spin }) {
             willChange: 'transform'
           }}
         >
-          {files.length && (
+          {files && files.length && (
             <>
-              <Image
+              {files[0].type === 'file' && <Image
                 className=" "
-                src={files[0]?.[files[0]?.type].url}
+                src={files[0].file.url}
                 fill
                 alt={title}
                 style={{ objectFit: 'contain' }}
-              />
+              />}
 
               <span
                 className="pointer-events-none absolute -top-10 left-0 w-max opacity-0 transition-opacity
@@ -52,7 +54,7 @@ function LogoImage({ card, namespace, index, spin }) {
   );
 }
 
-export default function LogoGallery({ database }) {
+export default function LogoGallery({ database }: { database: (PageObjectResponse | PartialPageObjectResponse)[] }) {
   const [outerSpin, setOuterSpin] = useState(0);
   const [innerSpin, setInnerSpin] = useState(0);
 
@@ -84,7 +86,7 @@ export default function LogoGallery({ database }) {
         card,
         namespace: 'innerCircle',
         index,
-        key: index,
+        // key: index,
         spin: innerSpin
       })
     );
@@ -96,7 +98,7 @@ export default function LogoGallery({ database }) {
         card,
         namespace: 'outerCircle',
         index,
-        key: index,
+        // key: index,
         spin: outerSpin
       })
     );
