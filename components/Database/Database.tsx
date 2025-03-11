@@ -1,4 +1,4 @@
-import { type PageObjectResponse, type ChildDatabaseBlockObjectResponse, BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import { type ChildDatabaseBlockObjectResponse, BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 import { getChildDatabase } from '../../lib/notion';
 import CardGallery from './CardGallery';

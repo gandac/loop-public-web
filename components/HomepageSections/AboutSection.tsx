@@ -3,11 +3,19 @@ import { type BlockObjectResponse, type PageObjectResponse } from '@notionhq/cli
 
 import { renderBlock } from '../notion/renderer';
 
-export default function AboutSection({ headline, description, valuesPage }: { headline: BlockObjectResponse, description: BlockObjectResponse, valuesPage: PageObjectResponse | undefined }) {
+export default function AboutSection({
+  headline,
+  description,
+  valuesPage
+}: {
+  headline: BlockObjectResponse;
+  description: BlockObjectResponse;
+  valuesPage: PageObjectResponse | undefined;
+}) {
   const headlineBlock = renderBlock(headline);
   const descriptionBlock = renderBlock(description);
   //TODO - see why we have incompatibility
-  const valuesDescription = valuesPage?.properties?.description as unknown as BlockObjectResponse
+  const valuesDescription = valuesPage?.properties?.description as unknown as BlockObjectResponse;
   const headlineDesc = renderBlock(valuesDescription);
 
   return (

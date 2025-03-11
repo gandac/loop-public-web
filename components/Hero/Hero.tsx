@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { type PageObjectResponse, type TextRichTextItemResponse, type ParagraphBlockObjectResponse, type RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
+import { type PageObjectResponse, type TextRichTextItemResponse, type ParagraphBlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 
 import { renderBlock } from '../notion/renderer';
 

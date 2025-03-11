@@ -1,6 +1,6 @@
 import { string, bool } from 'prop-types';
 import styles from '../styles/post.module.css';
-import { RichTextItemResponse, type TextRichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
+import { RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
 
 export function getTextContent({ title }: { title: Array<RichTextItemResponse> }) {
   if (!title) {

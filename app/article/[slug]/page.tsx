@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { type PageObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 
 import { getDatabase, getBlocks, getPageFromSlug } from '../../../lib/notion';
 import Text from '../../../components/text';
@@ -19,12 +18,10 @@ export async function generateStaticParams() {
   });
 }
 
-type LoopLinePageProperties = PageObjectResponse & { properties: PageObjectResponse['properties'] & Record<string, any> };
-
 export const revalidate = 0; // revalidate the data at most every hour
 
 export default async function Page({ params }: { params: { slug: string } }) {
-  const page: LoopLinePageProperties | undefined = await getPageFromSlug(params?.slug);
+  const page = await getPageFromSlug(params?.slug);
   const blocks = await getBlocks(page?.id);
 
   if (!page || !blocks) {
@@ -34,13 +31,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
   return (
     <div>
       <Head>
-        <title>{page.properties.Title?.title[0].plain_text}</title>
+        <title>{page.properties.Title.type === "title" && page.properties.Title?.title[0].plain_text}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <article className={styles.container}>
         <h1 className={styles.name}>
-          <Text title={page.properties.Title?.title} />
+          {page.properties.Title.type === "title" && (<Text title={page.properties.Title?.title} />)}
         </h1>
         <section>
           {blocks.map((block) => (
